@@ -1,0 +1,58 @@
+[build-system]
+requires = [
+    "setuptools>=68.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "empire-config"
+version = "1.0"
+authors = [
+    {name="Yann Tremblay", email="yanntremblay@tombmyst.ca"}
+]
+description = "Small project that handles configuration"
+readme = "README.md"
+license = {file="LICENSE"}
+requires-python = ">=3.10"
+classifiers = [
+    "Intended Audience :: Developers",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Language :: Python :: 3.10",
+	"Typing :: Typed"
+]
+dependencies = [
+    "orjson>=3.9.4",
+    "empire_commons@https://github.com/Tombmyst-Empire/empire-commons/archive/refs/heads/master.zip"
+]
+[project.optional-dependencies]
+tests = ["requirements_dev.txt"]
+
+[project.urls]
+"Homepage" = "https://github.com/Tombmyst-Empire/empire-config"
+"Bug Tracker" = "https://github.com/Tombmyst-Empire/empire-config/issues"
+
+[tool.pytest.ini_options]
+minversion = "7.3.1"
+python_files = "test_*.py"
+testpaths = [
+    "tests"
+]
+pythonpath = "."
+
+[tool.black]
+line-length = 150
+
+[tool.pylint.main]
+py-version = "3.10"
+max-line-length = 150
+max-args = 10
+max-attributes = 25
+recursive = true
+jobs = 0
+
+[tool.pylint.'MESSAGE CONTROL']
+confidence = "UNDEFINED"
+
+[tool.pylint.reports]
+output-format = "colorized"
